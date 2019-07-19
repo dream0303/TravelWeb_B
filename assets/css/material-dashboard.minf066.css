@@ -103,7 +103,7 @@
 }
 
 html {
-    font-family: sans-serif;
+    font-family: 'Noto Sans TC', sans-serif;
     line-height: 1.15;
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
@@ -131,7 +131,7 @@ section {
 
 body {
     margin: 0;
-    font-family: Roboto, Helvetica, Arial, sans-serif;
+    font-family: 'Noto Sans TC', Roboto, Helvetica, Arial, sans-serif;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
@@ -266,7 +266,7 @@ code,
 kbd,
 pre,
 samp {
-    font-family: monospace, monospace;
+    font-family: 'Noto Sans TC', sans-serif,monospace, monospace;
     font-size: 1em
 }
 
@@ -326,7 +326,7 @@ optgroup,
 select,
 textarea {
     margin: 0;
-    font-family: inherit;
+    font-family: 'Noto Sans TC', sans-serif,inherit;
     font-size: inherit;
     line-height: inherit
 }
@@ -447,7 +447,7 @@ h4,
 h5,
 h6 {
     margin-bottom: .5rem;
-    font-family: inherit;
+    font-family: 'Noto Sans TC', sans-serif,inherit;
     font-weight: 400;
     line-height: 1.2;
     color: inherit
@@ -601,7 +601,7 @@ code,
 kbd,
 pre,
 samp {
-    font-family: SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace
+    font-family: 'Noto Sans TC', sans-serif,SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace
 }
 
 code {
@@ -5474,7 +5474,7 @@ button.close {
     z-index: 1070;
     display: block;
     margin: 0;
-    font-family: Roboto, Helvetica, Arial, sans-serif;
+    font-family: 'Noto Sans TC', Roboto, Helvetica, Arial, sans-serif;
     font-style: normal;
     font-weight: 400;
     line-height: 1.5;
@@ -5595,7 +5595,7 @@ button.close {
     left: 0;
     z-index: 1060;
     max-width: 276px;
-    font-family: Roboto, Helvetica, Arial, sans-serif;
+    font-family: 'Noto Sans TC', Roboto, Helvetica, Arial, sans-serif;
     font-style: normal;
     font-weight: 400;
     line-height: 1.5;
@@ -13532,7 +13532,7 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: Roboto, Helvetica, Arial, sans-serif;
+    font-family: 'Noto Sans TC', Roboto, Helvetica, Arial, sans-serif;
     font-weight: 300;
     line-height: 1.5em
 }
@@ -14028,7 +14028,7 @@ legend {
 }
 
 .serif-font {
-    font-family: Roboto Slab, Times New Roman, serif
+    font-family: 'Noto Sans TC', sans-serif,Roboto Slab, Times New Roman, serif
 }
 
 * {
@@ -21526,7 +21526,7 @@ body.swal2-no-backdrop .swal2-shown.swal2-bottom-right {
     padding: 1.25em;
     border-radius: .3125em;
     background: #fff;
-    font-family: inherit;
+    font-family: 'Noto Sans TC', sans-serif,inherit;
     font-size: 1rem;
     box-sizing: border-box
 }
@@ -21679,7 +21679,7 @@ body.swal2-no-backdrop .swal2-shown.swal2-bottom-right {
     border-radius: 0;
     background: transparent;
     color: #ccc;
-    font-family: serif;
+    font-family: 'Noto Sans TC', sans-serif,serif;
     font-size: 2.5em;
     line-height: 1.2;
     cursor: pointer;
@@ -22794,7 +22794,7 @@ table.dataTable.dtr-inline.collapsed>tbody>tr[role=row]>th:first-child:before {
     box-sizing: content-box;
     text-align: center;
     text-indent: 0 !important;
-    font-family: Courier New, Courier, monospace;
+    font-family: 'Noto Sans TC', sans-serif,Courier New, Courier, monospace;
     line-height: 14px;
     content: "+";
     background-color: #0275d8
@@ -22845,7 +22845,7 @@ table.dataTable.dtr-column>tbody>tr>th.control:before {
     box-sizing: content-box;
     text-align: center;
     text-indent: 0 !important;
-    font-family: Courier New, Courier, monospace;
+    font-family: 'Noto Sans TC', sans-serif,Courier New, Courier, monospace;
     line-height: 14px;
     content: "+";
     background-color: #0275d8
@@ -23175,9 +23175,9 @@ table.dataTable tbody tr.selected a {
 }
 
 @media screen and (max-width:767px) {
-    table.dataTable>tbody>tr>td:first-child {
+    /* table.dataTable>tbody>tr>td:first-child {
         padding-left: 30px !important
-    }
+    } */
 
     table.dataTable.dtr-inline.collapsed>tbody>tr[role=row]>td:first-child:before,
     table.dataTable.dtr-inline.collapsed>tbody>tr[role=row]>th:first-child:before {
@@ -23194,7 +23194,7 @@ table.dataTable tbody tr.selected a {
         box-shadow: 0 0 3px #444;
         box-sizing: content-box;
         text-align: center;
-        font-family: Courier New, Courier, monospace;
+        font-family: 'Noto Sans TC', sans-serif,Courier New, Courier, monospace;
         line-height: 18px;
         content: "+";
         background-color: #fff
@@ -23953,7 +23953,7 @@ body .fc {
     font-size: 1em;
     text-align: center;
     overflow: hidden;
-    font-family: Courier New, Courier, monospace;
+    font-family: 'Noto Sans TC', sans-serif,Courier New, Courier, monospace;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -24994,7 +24994,7 @@ a.fc-more:hover {
     overflow: hidden;
     line-height: 8px;
     font-size: 11px;
-    font-family: monospace;
+    font-family: 'Noto Sans TC', sans-serif,monospace;
     text-align: center;
     cursor: s-resize
 }
