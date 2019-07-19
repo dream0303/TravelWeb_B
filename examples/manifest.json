@@ -1,0 +1,22 @@
+{
+    "name": "新北市旅遊網",
+    "short_name": "新北旅遊",
+   
+    "start_url": "./index.php",
+    "background_color": "#3EEEA4",
+
+
+    "icons": [
+        {
+          "src": "./img/fav512.png",
+          "type": "image/png",
+          "sizes": "512x512"
+        },
+        {
+          "src": "./img/fav192.png",
+          "type": "image/png",
+          "sizes": "192x192"
+        }
+      ]
+
+}

@@ -3,6 +3,15 @@
 <meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 
 <head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-143297423-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-143297423-2');
+</script>
   <meta charset="utf-8" />
 
   <link rel="shortcut icon" href="./img/fav128.ico" type="image/x-icon">
@@ -19,9 +28,9 @@
   <meta name="author" content="Yu Yu-Min">
 
   <!--     Fonts and icons     -->
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Noto+Sans+TC&display=swap">
   <link rel="stylesheet" type="text/css"
     href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
-
   <!-- CSS Files -->
   <link href="../assets/css/material-dashboard.minf066.css?v=2.1.0" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
@@ -30,12 +39,16 @@
   <link rel="stylesheet" href="./css/dataTables.bootstrap4.min.css">
   <link rel="stylesheet" href="./css/all.min.css">
   <link rel="stylesheet" href="./css/coffee.css">
+  <link rel="manifest" href="./manifest.json">
 </head>
 
 <body class="">
   <?php
 (!(isset($_GET['do'])))?$_GET['do']='main':'';
+// include "./opendata.php";
+
 ?>
+
   <div class="wrapper ">
     <div class="sidebar" data-color="rose" data-background-color="black" data-image="../assets/img/sidebar-1.jpg">
 
@@ -73,14 +86,14 @@
         </div>
         <ul class="nav">
           <li class="nav-item <?=($_GET['do']=='main')?'active':'';?> ">
-            <a class="nav-link" href="?do=main">
+            <a class="nav-link" href="./main.php">
               <i class="material-icons">dashboard</i>
               <p> 首頁 </p>
             </a>
           </li>
 
           <li class="nav-item <?=($_GET['do']=='table')?'active':'';?>">
-            <a class="nav-link" href="?do=table">
+            <a class="nav-link" href="./table.php">
               <i class="material-icons">grid_on</i>
               <p> 所有景點列表 </p>
             </a>
@@ -88,8 +101,8 @@
           </li>
 
 
-          <li class="nav-item <?=($_GET['do']=='map')?'active':'';?>">
-            <a class="nav-link" href="?do=map">
+          <li class="nav-item <?=($_GET['do']=='map')?'active':'';?> ">
+            <a class="nav-link" href="./map.php">
               <i class="material-icons">place</i>
               <p> 按區顯示景點 </p>
             </a>
@@ -108,13 +121,13 @@
             <div class="collapse" id="chts">
               <ul class="nav">
                 <li class="nav-item <?=($_GET['ch']=='bar')?'active':'';?>">
-                  <a class="nav-link" href="?do=charts&&ch=bar">
+                  <a class="nav-link" href="./charts.php?ch=bar">
                     <span class="sidebar-mini"> BAR </span>
                     <span class="sidebar-normal"> 長條圖 </span>
                   </a>
                 </li>
                 <li class="nav-item <?=($_GET['ch']=='pie')?'active':'';?>">
-                  <a class="nav-link" href="?do=charts&&ch=pie">
+                  <a class="nav-link" href="./charts.php?ch=pie">
                     <span class="sidebar-mini"> PIE </span>
                     <span class="sidebar-normal"> 圓餅圖 </span>
                   </a>
@@ -131,7 +144,7 @@
     </div>
     <div class="main-panel">
       <!-- Navbar -->
-      <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
+      <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top " id="conTop">
         <div class="container-fluid">
           <div class="navbar-wrapper">
             <div class="navbar-minimize">
@@ -155,20 +168,29 @@
 
 
 
-
       <div class="content">
+<!-- loading -->
+      <div class="container-fluid" id="loading">
+
+      <div class="row h-100">
+      <div class="col-12 text-center align-self-center">
+              <img src="./img/load.svg" alt="" height="300" width="300" >
+      </div>
+      </div>
+
+    </div>
+    <!-- 內容 -->
         <div class="content" id="con">
-          <!-- 內容頁面 -->
 
           <?php
 
-include './'.$_GET['do'].'.php';
-?>
+            include './main.php';
+          ?>
 
-          <!-- 內容頁面結束 -->
         </div>
+<!-- 內容頁面結束 -->
       </div>
-      <footer class="footer">
+      <footer class="footer" id="foo">
         <div class="container-fluid">
 
           <div class="copyright float-right">
@@ -395,136 +417,80 @@ include './'.$_GET['do'].'.php';
     });
   </script>
 
-  <!-- datatable相關 -->
+<!-- loading -->
+<script>
 
-  <script>
-    $("#side").DataTable({
-      "language": {
-        "url": "./datatables-chinese-traditional.json"
-      },
-      "columnDefs": [{
-        "targets": 3,
-        "orderable": false,
-        "searchable": false
-      }]
-    });
+    $(document).on("readystatechange",function(){
+          if (document.readyState=="complete") {
+              $("#loading").fadeOut(1000,function(){
+                  $("#con,#foo").fadeIn(1000);
 
-    $(".btn-more").on("click", function () {
-      let title = $(this).parents("tr").find("td").eq(0).text();
-      $("#modal .modal-title").text(title);
-
-      let addr = $(this).parents("tr").find("td").eq(1).text();
-      $("#modal .modal-addr").text(addr);
+              });
+            
+          }
+        
+      });
+  
 
 
-      let toldescribe = $(this).parents("tr").find("td").eq(3).text();
-      $("#modal .modal-txt").text(toldescribe);
+    
+  function a_click_loading() {
+    // $("#con,#foo").fadeOut();
+    
+  $("#loading").fadeIn(1000);
 
-      let tel = $(this).parents("tr").find("td").eq(4).text();
-      $("#modal .modal-tel").text(tel);
 
 
-      $("#modal").modal("show");
-    })
-  </script>
+  if (document.readyState=="complete") {
+              $("#loading").fadeOut(1000);
+            
+          }
+
+  };
+
+
+</script>
 
   <!-- nav文字動態顯示 -->
   <script>
-    let navText = $("div.sidebar-wrapper").find("li.active p").text();
-    if (navText == "") navText = $("div.sidebar-wrapper").find("li.active span").text();
-    $("div.navbar-wrapper").find("a").text(navText);
-  </script>
 
-  <!-- 新北向量地圖 -->
-  <script>
+  // let navText = $("div.sidebar-wrapper").find("li.active p").text();
+  // if (navText == "") navText = $("div.sidebar-wrapper").find("li.active span").text();
+  // $("div.navbar-wrapper").find("a").text(navText);
 
-$("path").on("click", function () {
+  let navText = $("div.sidebar-wrapper").find("li.active p").text();
+  $("div.navbar-wrapper").find("a").text(navText);
 
-$("#side").DataTable().search($(this).attr("value")).draw();
-location.href="#map_tb";
-
+  // AJAX
+  $("a.nav-link").on("click",function (e) {
+    e.preventDefault();
 
 
-});
 
-$("path").mouseover(function () {
+    if ($(this).attr("data-toggle")!="collapse")
+     {
+      // 讀取畫面
+      a_click_loading();
+      let myUrl = $(this).attr("href");
+      $("li.active").removeClass("active");
+      $(this).parent().addClass("active");
+      //nav
+      navText = $("div.sidebar-wrapper").find("li.active p").text();
+      if (navText == "") navText = $("div.sidebar-wrapper").find("li.active span").text();
+      $("div.navbar-wrapper").find("a").text(navText);
+      // AJAX
+      $.ajax({url:myUrl,success:function(result){
+          $("#con").html(result);
+          location.href="#conTop";
+      }});
 
-$(this).css({
-    "stroke-width": "5",
-    "stroke": "#ef7a11",
-
-});
-});
-
-$("path").mouseout(function () {
-// mo = 0;
-$(this).css("stroke-width", "0");
-});
-</script>
-
-<script>
-    $(document).ready(function() {
-      /*  **************** pie Chart - barchart ******************** */
-      var dataPreferences = {
-                labels: [<?=rtrim($chTxt,",")?>],
-                series: [<?=rtrim($chVar,",")?>],
-              
-            };
-
-            var optionsPreferences = {
-                height: '600px'
-            };
-            var responsiveOptions = [
-  ['screen and (min-width: 640px)', {
-    chartPadding: 30,
-    labelOffset: 100,
-    labelDirection: 'explode',
-    labelInterpolationFnc: function(value) {
-      return value;
     }
-  }],
-  ['screen and (min-width: 1024px)', {
-    labelOffset: 150,
-    chartPadding: 20
-  }]
-];
-            Chartist.Pie('#chartPreferences', dataPreferences, optionsPreferences,responsiveOptions);
-
-
-       /*  **************** Simple Bar Chart - barchart ******************** */
-
-
-       var dataMultipleBarsChart = {
-                labels: [<?=rtrim($chTxt,",")?>],
-                series: [
-                    [<?=rtrim($chVar,",")?>],
-         
-                ]
-            };
-
-            var optionsMultipleBarsChart = {
-                seriesBarDistance: 10,
-
-                height: '450px'
-            };
-
-            var responsiveOptionsMultipleBarsChart = [
-                ['screen and (max-width: 640px)', {
-                    seriesBarDistance: 5,
-                    axisX: {
-                        labelInterpolationFnc: function(value) {
-                            return value[0];
-                        }
-                    }
-                }]
-            ];
-
-            var multipleBarsChart = Chartist.Bar('#multipleBarsChart', dataMultipleBarsChart, optionsMultipleBarsChart, responsiveOptionsMultipleBarsChart);
-
-            //start animation for the Emails Subscription Chart
-            md.startAnimationForBarChart(multipleBarsChart);
-    });
+   
+  });
   </script>
+
+
+
 </body>
 
 </html>

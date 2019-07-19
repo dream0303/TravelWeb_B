@@ -1,3 +1,9 @@
+body {
+    font-family: 'Noto Sans TC', sans-serif;
+
+  }
+
+
 
 @media(max-width:768px){
 
@@ -8,6 +14,7 @@
         content: attr(data-th)":";
         color: rgb(0, 17, 255);
         font-weight: bold;
+        padding-left:0px;
     }
     .table-rwd td{
         display: block;
@@ -25,7 +32,21 @@
 
 }
 
-
+#con,#foo{
+    display: none;
+}
+#loading{
+    height: 100vh;
+    overflow: hidden;
+    z-index: 1029;
+    position: absolute;
+    left: 0;
+    right: 0;
+    background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url(../img/Coffee-goods_15.jpg);
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+    }
 
 text{
     pointer-events:none;

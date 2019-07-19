@@ -20,17 +20,37 @@
                             <th>名稱</th>
                             <th>地址</th>
                             <th>開放時間</th>
+                            <th>詳細介紹</th>
                             <th style="display:none">隱藏的詳細介紹</th>
                             <th style="display:none">隱藏的電話</th>
-                            <th>詳細介紹</th>
                           </tr>
                         </thead>
 
                         <tbody>
-                          <?php
-                                include "./opendataLand.php";
-                            ?>
 
+    <?php
+        include "./opendata.php";
+        foreach ($dataTb as $rec) {
+        ?>
+
+
+    <tr>
+         <td data-th="名稱"><?=$rec["Name"]?></td>
+         <td data-th="地址"><?=$rec["Add"]?></td>
+         <td data-th="開放時間"><?=$rec["Opentime"]?></td>
+         <td data-th="詳細介紹" class="text-sm-right">
+            <a href="#" class="btn btn-link btn-warning btn-just-icon edit btn-more"><i class="material-icons">dvr</i></a>
+         </td>
+         <td style="display:none"><?=$rec["Toldescribe"]?></td>
+         <td style="display:none"><?=$rec["Tel"]?></td>
+
+         <!-- <td data-th="介紹"><button type="button" class="btn btn-link btn-more"><i class="fas fa-eye">詳細資料</i></button></td> -->
+    </tr>
+
+    <?php
+        }
+        
+    ?>
 
                         </tbody>
                       </table>
@@ -69,3 +89,34 @@
       </div>
     </div>
   </div>
+
+  <script>
+    $("#side").DataTable({
+      "language": {
+        "url": "./datatables-chinese-traditional.json"
+      },
+      "columnDefs": [{
+        "targets": 3,
+        "orderable": false,
+        "searchable": false
+      }]
+    });
+
+    $(".btn-more").on("click", function () {
+      let title = $(this).parents("tr").find("td").eq(0).text();
+      $("#modal .modal-title").text(title);
+
+      let addr = $(this).parents("tr").find("td").eq(1).text();
+      $("#modal .modal-addr").text(addr);
+
+
+      let toldescribe = $(this).parents("tr").find("td").eq(4).text();
+      $("#modal .modal-txt").text(toldescribe);
+
+      let tel = $(this).parents("tr").find("td").eq(5).text();
+      $("#modal .modal-tel").text(tel);
+
+
+      $("#modal").modal("show");
+    })
+  </script>

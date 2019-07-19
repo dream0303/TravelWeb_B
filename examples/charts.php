@@ -1,5 +1,5 @@
 <?php
-include "./opendataCharts.php";
+// include "./opendataCharts.php";
 ?>
 
 <div class="container-fluid">
@@ -8,6 +8,7 @@ include "./opendataCharts.php";
     <p class="category">新北市各地區景點的分佈數量</p>
   </div>
   <?php
+  include "./opendata.php";
 switch ($_GET['ch']) {
   case 'bar':
   ?>
@@ -60,3 +61,81 @@ break;
     break;
 }
 ?>
+
+<!-- Chartist -->
+<script>
+
+ 
+
+
+
+    $(document).ready(function() {
+      /*  **************** pie Chart - barchart ******************** */
+      var dataPreferences = {
+                labels: [<?=rtrim($chTxt,",")?>],
+                series: [<?=rtrim($chVar,",")?>],
+              
+            };
+
+            var optionsPreferences = {
+                height: '600px'
+            };
+            var responsiveOptions = [
+  ['screen and (min-width: 640px)', {
+    chartPadding: 30,
+    labelOffset: 100,
+    labelDirection: 'explode',
+    labelInterpolationFnc: function(value) {
+      return value;
+    }
+  }],
+  ['screen and (min-width: 1024px)', {
+    labelOffset: 150,
+    chartPadding: 20
+  }]
+  ];
+
+
+    Chartist.Pie('#chartPreferences', dataPreferences, optionsPreferences,responsiveOptions);
+
+
+
+
+       /*  **************** Simple Bar Chart - barchart ******************** */
+
+
+       var dataMultipleBarsChart = {
+                labels: [<?=rtrim($chTxt,",")?>],
+                series: [
+                    [<?=rtrim($chVar,",")?>],
+         
+                ]
+            };
+
+            var optionsMultipleBarsChart = {
+                seriesBarDistance: 10,
+
+                height: '450px'
+            };
+
+            var responsiveOptionsMultipleBarsChart = [
+                ['screen and (max-width: 640px)', {
+                    seriesBarDistance: 5,
+                    axisX: {
+                        labelInterpolationFnc: function(value) {
+                            return value[0];
+                        }
+                    }
+                }]
+            ];
+
+              var multipleBarsChart = Chartist.Bar('#multipleBarsChart', dataMultipleBarsChart, optionsMultipleBarsChart, responsiveOptionsMultipleBarsChart);
+           
+           //start animation for the Emails Subscription Chart
+           md.startAnimationForBarChart(multipleBarsChart);
+
+
+            
+
+    });
+</script>
