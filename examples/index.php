@@ -27,6 +27,11 @@
   <meta name="description" content="新北市旅遊網">
   <meta name="author" content="Yu Yu-Min">
 
+  <meta property="og:title" content="新北市旅遊網">
+	<meta property="og:image" content="./img/fav512.png">
+	<meta property="og:description" content="新北市旅遊網-新北市旅遊景點資訊">
+	<meta property="og:site_name" content="新北市旅遊網">
+
   <!--     Fonts and icons     -->
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Noto+Sans+TC&display=swap">
   <link rel="stylesheet" type="text/css"
